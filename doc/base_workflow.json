@@ -1,0 +1,234 @@
+{
+  "last_node_id": 6,
+  "last_link_id": 8,
+  "nodes": [
+    {
+      "id": 2,
+      "type": "PromptTextNode",
+      "pos": {
+        "0": 35,
+        "1": 62
+      },
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "TEXT",
+          "type": "TEXT",
+          "links": [
+            5
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PromptTextNode"
+      },
+      "widgets_values": [
+        "你好，我是顶针！欢迎来四川找我玩"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "LoadAudio",
+      "pos": {
+        "0": 58,
+        "1": 345
+      },
+      "size": {
+        "0": 315,
+        "1": 124
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            6
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadAudio"
+      },
+      "widgets_values": [
+        "dingzhen_0.wav",
+        null,
+        ""
+      ]
+    },
+    {
+      "id": 6,
+      "type": "F5TTSNode",
+      "pos": {
+        "0": 491,
+        "1": 191
+      },
+      "size": {
+        "0": 412.60003662109375,
+        "1": 256.20001220703125
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "gen_text",
+          "type": "TEXT",
+          "link": 5
+        },
+        {
+          "name": "ref_audio",
+          "type": "AUDIO",
+          "link": 6
+        },
+        {
+          "name": "ref_text",
+          "type": "TEXT",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            7
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            8
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "F5TTSNode"
+      },
+      "widgets_values": [
+        "F5-TTS",
+        1,
+        true,
+        "but,however,nevertheless,yet,still,therefore,thus,hence,consequently,moreover,furthermore,additionally,meanwhile,alternatively,otherwise,namely,specifically,for example,such as,in fact,indeed,notably,in contrast,on the other hand,conversely,in conclusion,to summarize,finally"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "PreviewImage",
+      "pos": {
+        "0": 995,
+        "1": 318
+      },
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 8
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 4,
+      "type": "PreviewAudio",
+      "pos": {
+        "0": 965,
+        "1": 68
+      },
+      "size": {
+        "0": 315,
+        "1": 76
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewAudio"
+      },
+      "widgets_values": [
+        null
+      ]
+    }
+  ],
+  "links": [
+    [
+      5,
+      2,
+      0,
+      6,
+      0,
+      "TEXT"
+    ],
+    [
+      6,
+      3,
+      0,
+      6,
+      1,
+      "AUDIO"
+    ],
+    [
+      7,
+      6,
+      0,
+      4,
+      0,
+      "AUDIO"
+    ],
+    [
+      8,
+      6,
+      1,
+      5,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1,
+      "offset": [
+        0,
+        0
+      ]
+    }
+  },
+  "version": 0.4
+}
