@@ -9,6 +9,8 @@ from f5_model.utils import (
     convert_char_to_pinyin,
     save_spectrogram,
 )
+from LangSegment import LangSegment
+from zh_normalization import text_normalize
 import re
 import torch
 import tempfile
@@ -28,7 +30,7 @@ from huggingface_hub import  snapshot_download
 aifsh_dir = osp.join(folder_paths.models_dir,"AIFSH")
 pretrained_dir = osp.join(aifsh_dir,"F5-TTS")
 openai_dir = osp.join(aifsh_dir,"whisper-large-v3-turbo")
-
+LangSegment.setfilters(["zh", "en"])
 SPLIT_WORDS = [
     "but", "however", "nevertheless", "yet", "still",
     "therefore", "thus", "hence", "consequently",
@@ -163,6 +165,7 @@ class F5TTSNode:
             max_chars = 300-len(ref_text.encode('utf-8'))
         gen_text_batches = split_text_into_batches(gen_text, max_chars=max_chars)
         print('ref_text', ref_text)
+        gen_text_batches = text_list_normalize(gen_text_batches)
         for i, gen_text in enumerate(gen_text_batches):
             print(f'gen_text {i}', gen_text)
         print(f"Generating audio using {model_choice} in {len(gen_text_batches)} batches")
@@ -180,6 +183,25 @@ class F5TTSNode:
 NODE_CLASS_MAPPINGS = {
     "F5TTSNode": F5TTSNode
 }
+
+def text_list_normalize(texts):
+    text_list = []
+    for text in texts:
+        for tmp in LangSegment.getTexts(text):
+            normalize = text_normalize(tmp.get("text"))
+            if normalize != "" and tmp.get("lang") == "en" and normalize not in ["."]:
+                if len(text_list) > 0:
+                    text_list[-1] += normalize
+                else:
+                    text_list.append(normalize)
+            elif tmp.get("lang") == "zh":
+                text_list.append(normalize)
+            else:
+                if len(text_list) > 0:
+                    text_list[-1] += tmp.get("text")
+                else:
+                    text_list.append(tmp.get("text"))
+    return text_list
 
 def load_model(exp_name, model_cls, model_cfg, ckpt_step):
 

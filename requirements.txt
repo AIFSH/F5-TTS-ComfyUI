@@ -24,3 +24,5 @@ zhon
 cached_path
 pydub
 soundfile
+LangSegment
+numpy==1.26.4
