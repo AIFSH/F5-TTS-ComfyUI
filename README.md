@@ -6,7 +6,7 @@ weights will be download from hf automaticlly,对于国内用户，你可以手�
 
 ## 教程
 - [演示视频](https://www.bilibili.com/video/BV1Tjm5YLEsX)
-- [一键包,内含F5-TTS，FireRedTTS，JoyHallo，hallo2四个节点，持续更新中，一次订阅31天免费更新](https://pan.quark.cn/s/bfebd31a208d)
+- [一键包,内含F5-TTS，FireRedTTS，JoyHallo，hallo2四个节点，持续更新中，一次订阅31天免费更新](https://b23.tv/Zm3kPNP)
 
 ## Example
 
