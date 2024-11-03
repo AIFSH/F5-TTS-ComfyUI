@@ -62,7 +62,7 @@ class F5TTSNode:
         if not osp.exists(osp.join(pretrained_dir,"F5TTS_Base/model_1200000.safetensors")):
             snapshot_download(repo_id="SWivid/F5-TTS",
                             local_dir=pretrained_dir,
-                            allow_patterns=["*.safetensors"])
+                            allow_patterns=["*.safetensors","*.json"])
         if not osp.exists(osp.join(openai_dir,"model.safetensors")):
             snapshot_download(repo_id="openai/whisper-large-v3-turbo",
                               local_dir=openai_dir)
