@@ -7,7 +7,8 @@ weights will be download from hf automaticlly,对于国内用户，你可以手�
 ## 教程
 - [演示视频](https://www.bilibili.com/video/BV1Tjm5YLEsX)
 - [一键包,内含F5-TTS，FireRedTTS，JoyHallo，hallo2四个节点，持续更新中，一次订阅31天免费更新](https://b23.tv/Zm3kPNP)
-
+## Disclaimer / 免责声明
+We do not hold any responsibility for any illegal usage of the codebase. Please refer to your local laws about DMCA and other related laws. 我们不对代码库的任何非法使用承担任何责任. 请参阅您当地关于 DMCA (数字千年法案) 和其他相关法律法规.
 ## Example
 
 | gen_text | ref_audio | out_audio | audio_img |
